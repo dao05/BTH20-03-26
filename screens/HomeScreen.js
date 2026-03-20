@@ -184,24 +184,25 @@ padding:20
 },
 
 header:{
+paddingTop:65,
 flexDirection:"row",
 justifyContent:"space-between",
 alignItems:"center"
 },
 
 hello:{
-fontSize:22,
+fontSize:20,
 fontWeight:"bold"
 },
 
 name:{
-color:"gray"
+color:"black"
 },
 
 avatar:{
-width:40,
-height:40,
-borderRadius:20
+width:48,
+height:46,
+borderRadius:10 
 },
 
 section:{
@@ -211,7 +212,7 @@ fontWeight:"600"
 },
 
 grid:{
-marginTop:15,
+marginTop:25,
 flexDirection:"row",
 flexWrap:"wrap",
 justifyContent:"space-between"
@@ -219,21 +220,21 @@ justifyContent:"space-between"
 
 card:{
 width:"47%",
-height:120,
+height:180,
 backgroundColor:"#fff",
 borderRadius:18,
 alignItems:"center",
 justifyContent:"center",
 marginBottom:15,
-shadowColor:"#000",
+shadowColor:"#808080",
 shadowOpacity:0.1,
 shadowRadius:10,
 elevation:4
 },
 
 icon:{
-width:35,
-height:35,
+width:27,
+height:26,  
 marginBottom:8
 },
 
@@ -250,47 +251,51 @@ exploreHeader:{
 flexDirection:"row",
 justifyContent:"space-between",
 alignItems:"center",
-marginTop:10
+marginTop:0,
+marginBottom:20
 },
 
 arrow:{
-width:22,
-height:22
+marginRight:3,
+width:29,
+height:15
 },
 
 products:{
-flexDirection:"row",
-justifyContent:"space-between",
-marginTop:15
+  flexDirection:"row",
+  gap: 25,
+  marginTop:15
 },
 
 product:{
-width:100,
-height:120,
+width:127,
+height:125,
 borderRadius:12
 },
 
-bottomNav:{
-position:"absolute",
-bottom:0,
-left:0,
-right:0,
-height:70,
-backgroundColor:"#fff",
-flexDirection:"row",
-justifyContent:"space-around",
-alignItems:"center",
-borderTopLeftRadius:25,
-borderTopRightRadius:25,
-shadowColor:"#000",
-shadowOpacity:0.1,
-shadowRadius:10,
-elevation:10
-},
-
+bottomNav: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 80,
+    backgroundColor: "#fff",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    borderTopLeftRadius: 40,
+    borderTopRightRadius: 40,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: -3 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 10,
+    paddingBottom: 25,
+    height:130,
+  },
 navIcon:{
-width:25,
-height:25
+width:22,
+height:23
 }
 
 });

@@ -15,7 +15,7 @@ onPress={()=> navigation.navigate("Home")}
 >
 
 <Image
-source={require("../assets/icon-arrow1.png")}
+source={require("../assets/Arrow1.png")}
 style={styles.backIcon}
 />
 
@@ -37,6 +37,10 @@ style={styles.frame}
 <Image
 source={require("../assets/juice.png")}
 style={styles.product}
+/>
+<Image
+  source={require("../assets/m.png")}
+  style={styles.overlay}
 />
 
 
@@ -67,7 +71,7 @@ position:"absolute",
 top:60,
 left:20,
 width:45,
-height:45,
+height:44,
 backgroundColor:"#fff",
 borderRadius:12,
 justifyContent:"center",
@@ -75,32 +79,46 @@ alignItems:"center",
 shadowColor:"#000",
 shadowOpacity:0.1,
 shadowRadius:10,
-elevation:5
+elevation:5,
+marginLeft:10  ,
+ zIndex: 1 
 },
 
 backIcon:{
-width:20,
-height:20
+width:11,
+height:19,
+ zIndex: 1
 },
 
 frame:{
 position:"absolute",
 width:280,
-height:420,
-resizeMode:"contain"
+height:500,
+resizeMode:"contain",
+ zIndex: 1
 },
 
 product:{
-width:200,
-height:350,
-resizeMode:"contain"
-},
+width:"100%",
+height:"100%",
 
+},
+overlay:{
+  position:"absolute",
+  width:280,        // bằng frame
+  height:270,       // = 1/2 frame (frame cao 500)
+  bottom:175,         // dính đáy frame
+  opacity:1,
+  zIndex:2,
+  borderBottomLeftRadius: 35,
+  borderBottomRightRadius: 35
+},  
 bottomCard:{
+    
 position:"absolute",
-bottom:40,
-width:"85%",
-height:80,
+bottom:5,
+width:375,
+height:238,
 resizeMode:"contain"
 }
 
