@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity, SafeAreaView, StatusBar } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity, SafeAreaView, StatusBar, ScrollView } from "react-native";
 
 export default function CartScreen({ navigation }) {
   // State cho số lượng từng sản phẩm
@@ -37,8 +37,6 @@ export default function CartScreen({ navigation }) {
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="#F5F5F5" />
       
-      
-
       {/* Header với nút back và title */}
       <View style={styles.header}>
         <TouchableOpacity
@@ -50,118 +48,124 @@ export default function CartScreen({ navigation }) {
             style={styles.backIcon}
           />
         </TouchableOpacity>
-
-        
       </View>
-    <Text style={[styles.title, { paddingLeft: 25 }]}>
-  Your Cart <Text style={styles.cartEmoji}>🛒</Text>
-</Text>
+      
+      <Text style={[styles.title, { paddingLeft: 25 }]}>
+        Your Cart <Text style={styles.cartEmoji}>🛒</Text>
+      </Text>
 
-      {/* Danh sách sản phẩm */}
-      <View style={styles.productsList}>
-        {/* Product 1 - Orange Juice */}
-        <View style={styles.productItem}>
-          <Image
-            source={require("../assets/product01.png")}
-            style={styles.productImage}
-          />
-          <View style={styles.productInfo}>
-           <Text style={[styles.productName, { color: "gray" }]}>Lauren's</Text>
-            <Text style={styles.productName}>Orange Juice</Text>
-            <Text style={styles.productPrice}>₹ {prices.orangeJuice}</Text>
+      {/* NỘI DUNG CÓ THỂ CUỘN */}
+      <ScrollView 
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContent}
+      >
+        {/* Danh sách sản phẩm */}
+        <View style={styles.productsList}>
+          {/* Product 1 - Orange Juice */}
+          <View style={styles.productItem}>
+            <Image
+              source={require("../assets/product01.png")}
+              style={styles.productImage}
+            />
+            <View style={styles.productInfo}>
+              <Text style={[styles.productName, { color: "gray" }]}>Lauren's</Text>
+              <Text style={styles.productName}>Orange Juice</Text>
+              <Text style={styles.productPrice}>₹ {prices.orangeJuice}</Text>
+            </View>
+            <View style={styles.quantityControl}>
+              <TouchableOpacity 
+                style={styles.quantityBtn}
+                onPress={() => updateQuantity('orangeJuice', 'decrease')}
+              >
+                <Text style={styles.quantityBtnText}>-</Text>
+              </TouchableOpacity>
+              <Text style={styles.quantityText}>{quantities.orangeJuice}</Text>
+              <TouchableOpacity 
+                style={styles.quantityBtn}
+                onPress={() => updateQuantity('orangeJuice', 'increase')}
+              >
+                <Text style={styles.quantityBtnText}>+</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-          <View style={styles.quantityControl}>
-            <TouchableOpacity 
-              style={styles.quantityBtn}
-              onPress={() => updateQuantity('orangeJuice', 'decrease')}
-            >
-              <Text style={styles.quantityBtnText}>-</Text>
-            </TouchableOpacity>
-            <Text style={styles.quantityText}>{quantities.orangeJuice}</Text>
-            <TouchableOpacity 
-              style={styles.quantityBtn}
-              onPress={() => updateQuantity('orangeJuice', 'increase')}
-            >
-              <Text style={styles.quantityBtnText}>+</Text>
-            </TouchableOpacity>
+
+          {/* Product 2 - Skimmed Milk */}
+          <View style={styles.productItem}>
+            <Image
+              source={require("../assets/product02.png")}
+              style={styles.productImage}
+            />
+            <View style={styles.productInfo}>
+              <Text style={[styles.productName, { color: "gray" }]}>Baskin's</Text>
+              <Text style={styles.productName}>Skimmed Milk</Text>
+              <Text style={styles.productPrice}>₹ {prices.skimmedMilk}</Text>
+            </View>
+            <View style={styles.quantityControl}>
+              <TouchableOpacity 
+                style={styles.quantityBtn}
+                onPress={() => updateQuantity('skimmedMilk', 'decrease')}
+              >
+                <Text style={styles.quantityBtnText}>-</Text>
+              </TouchableOpacity>
+              <Text style={styles.quantityText}>{quantities.skimmedMilk}</Text>
+              <TouchableOpacity 
+                style={styles.quantityBtn}
+                onPress={() => updateQuantity('skimmedMilk', 'increase')}
+              >
+                <Text style={styles.quantityBtnText}>+</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          {/* Product 3 - Aloe Vera Lotion */}
+          <View style={styles.productItem}>
+            <Image
+              source={require("../assets/product03.png")}
+              style={styles.productImage}
+            />
+            <View style={styles.productInfo}>
+              <Text style={[styles.productName, { color: "gray" }]}>Marley's</Text>
+              <Text style={styles.productName}>Aloe Vera Lotion</Text>
+              <Text style={styles.productPrice}>₹ {prices.aloeVera}</Text>
+            </View>
+            <View style={styles.quantityControl}>
+              <TouchableOpacity 
+                style={styles.quantityBtn}
+                onPress={() => updateQuantity('aloeVera', 'decrease')}
+              >
+                <Text style={styles.quantityBtnText}>-</Text>
+              </TouchableOpacity>
+              <Text style={styles.quantityText}>{quantities.aloeVera}</Text>
+              <TouchableOpacity 
+                style={styles.quantityBtn}
+                onPress={() => updateQuantity('aloeVera', 'increase')}
+              >
+                <Text style={styles.quantityBtnText}>+</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
 
-        {/* Product 2 - Skimmed Milk */}
-        <View style={styles.productItem}>
-          <Image
-            source={require("../assets/product02.png")}
-            style={styles.productImage}
-          />
-          <View style={styles.productInfo}>
-            <Text style={[styles.productName, { color: "gray" }]}>Baskin's</Text>
-            <Text style={styles.productName}>Skimmed Milk</Text>
-            <Text style={styles.productPrice}>₹ {prices.skimmedMilk}</Text>
+        {/* Total và Checkout */}
+        <View style={styles.footer}>
+          <View style={styles.totalRow}>
+            <Text style={styles.totalText}>Total</Text>
+            <Text style={styles.price}>₹ {calculateTotal().toLocaleString()}</Text>
           </View>
-          <View style={styles.quantityControl}>
-            <TouchableOpacity 
-              style={styles.quantityBtn}
-              onPress={() => updateQuantity('skimmedMilk', 'decrease')}
-            >
-              <Text style={styles.quantityBtnText}>-</Text>
-            </TouchableOpacity>
-            <Text style={styles.quantityText}>{quantities.skimmedMilk}</Text>
-            <TouchableOpacity 
-              style={styles.quantityBtn}
-              onPress={() => updateQuantity('skimmedMilk', 'increase')}
-            >
-              <Text style={styles.quantityBtnText}>+</Text>
-            </TouchableOpacity>
-          </View>
+
+          <TouchableOpacity
+            style={styles.checkoutBtn}
+            onPress={() => navigation.navigate("Checkout")}
+          >
+            <Text style={styles.checkoutText}>Proceed to checkout</Text>
+          </TouchableOpacity>
         </View>
 
-        {/* Product 3 - Aloe Vera Lotion */}
-        <View style={styles.productItem}>
-          <Image
-            source={require("../assets/product03.png")}
-            style={styles.productImage}
-          />
-          <View style={styles.productInfo}>
-            <Text style={[styles.productName, { color: "gray" }]}>Marley's</Text>
-            <Text style={styles.productName}>Aloe Vera Lotion</Text>
-            <Text style={styles.productPrice}>₹ {prices.aloeVera}</Text>
-          </View>
-          <View style={styles.quantityControl}>
-            <TouchableOpacity 
-              style={styles.quantityBtn}
-              onPress={() => updateQuantity('aloeVera', 'decrease')}
-            >
-              <Text style={styles.quantityBtnText}>-</Text>
-            </TouchableOpacity>
-            <Text style={styles.quantityText}>{quantities.aloeVera}</Text>
-            <TouchableOpacity 
-              style={styles.quantityBtn}
-              onPress={() => updateQuantity('aloeVera', 'increase')}
-            >
-              <Text style={styles.quantityBtnText}>+</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
+        {/* TẠO KHOẢNG TRỐNG ĐỂ NỘI DUNG KHÔNG BỊ CHE BỞI BOTTOM NAV */}
+        <View style={styles.bottomPadding} />
+      </ScrollView>
 
-      {/* Total và Checkout */}
-      <View style={styles.footer}>
-        <View style={styles.totalRow}>
-          <Text style={styles.totalText}>Total</Text>
-          <Text style={styles.price}>₹ {calculateTotal().toLocaleString()}</Text>
-        </View>
-
-        <TouchableOpacity
-          style={styles.checkoutBtn}
-          onPress={() => navigation.navigate("Checkout")}
-        >
-          <Text style={styles.checkoutText}>Proceed to checkout</Text>
-        </TouchableOpacity>
-
-        
-      </View>
-
-      {/* Bottom Navigation */}
+      {/* Bottom Navigation - CỐ ĐỊNH */}
       <View style={styles.bottomNav}>
         <TouchableOpacity onPress={() => navigation.navigate("Home")}>
           <Image
@@ -212,7 +216,6 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 5,
   },
-  
   header: {
     flexDirection: "row",
     alignItems: "center",
@@ -232,7 +235,6 @@ const styles = StyleSheet.create({
     width: 11,
     height: 19,
     alignItems: "center",
-   
   },
   title: {
     fontSize: 20,
@@ -241,13 +243,14 @@ const styles = StyleSheet.create({
   cartEmoji: {
     fontSize: 28,
   },
+  scrollContent: {
+    paddingBottom: 20,
+  },
   productsList: {
-    flex: 1,
     paddingHorizontal: 20,
     paddingTop: 30,
-     paddingLeft: 25,
-      paddingRight: 25,
-      
+    paddingLeft: 25,
+    paddingRight: 25,
   },
   productItem: {
     flexDirection: "row",
@@ -256,7 +259,6 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     padding: 15,
     marginBottom: 20,
-   
   },
   productImage: {
     width: 60,
@@ -270,7 +272,7 @@ const styles = StyleSheet.create({
     marginLeft: 15,
   },
   productName: {
-    fontSize: 12    ,
+    fontSize: 12,
     fontWeight: "450",
     marginBottom: 5,
   },
@@ -298,8 +300,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: "#ffffff",
     justifyContent: "center",
-    alignItems: "center",   
-    
+    alignItems: "center",
   },
   quantityBtnText: {
     color: "#F08A5D",
@@ -307,7 +308,6 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     alignItems: "center",
     justifyContent: "center",
-    
   },
   quantityText: {
     fontSize: 15,
@@ -318,14 +318,12 @@ const styles = StyleSheet.create({
   },
   footer: {
     paddingHorizontal: 25,
-    paddingBottom: 140,
-    
+    paddingBottom: 20,
   },
   totalRow: {
     flexDirection: "row",
     justifyContent: "space-between",
     marginVertical: 15,
-    
   },
   totalText: {
     fontSize: 18,
@@ -334,11 +332,10 @@ const styles = StyleSheet.create({
     paddingLeft: 8,
   },
   price: {
-    fontSize: 20    ,
+    fontSize: 20,
     fontWeight: "600",
     color: "#F08A5D",
-    paddingRight:8,
-    
+    paddingRight: 8,
   },
   checkoutBtn: {
     backgroundColor: "#F08A5D",
@@ -346,21 +343,20 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     alignItems: "center",
     marginBottom: 10,
-    
-    
   },
   checkoutText: {
     color: "#fff",
     fontSize: 16,
     fontWeight: "600",
   },
-  
+  bottomPadding: {
+    height: 100,
+  },
   bottomNav: {
     position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
-    height: 80,
     backgroundColor: "#fff",
     flexDirection: "row",
     justifyContent: "space-around",
@@ -372,8 +368,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 10,
+    height: 90,
     paddingBottom: 25,
-    height:130,
+    paddingTop: 15,
   },
   navIcon: {
     width: 22,
